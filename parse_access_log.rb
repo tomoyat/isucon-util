@@ -41,12 +41,12 @@ indexs.map do |index|
     record["request_method_uri"] == index
   end
   total_request = targets.length
-  total_request_time = records.inject(0.0) do |memo, item|
+  total_request_time = targets.inject(0.0) do |memo, item|
     item["request_time"] = 0.0 if item["request_time"] == ""
     memo += item["request_time"].to_f
   end
   average_request_time = total_request_time / total_request
-  max_request_time = records.inject(0.0) do |memo, item|
+  max_request_time = targets.inject(0.0) do |memo, item|
         item["request_time"] = 0.0 if item["request_time"] == ""
       memo = [memo, item["request_time"].to_f].max
   end
